@@ -78,7 +78,6 @@ while start != 'e':
     delet.append(closeNewVizit)
     i.append(delet)
     addition(zanDni, orderMin(openNewVizit, closeNewVizit), orderMax(openNewVizit, closeNewVizit))
-    #print(zanDni)
   
   if start == 'r':
     removeOpenVizit = int(input("Введите начало удаления визитов:"))
@@ -159,7 +158,3 @@ while start != 'e':
             k += 1
         except IndexError: 
           break
-
-
-
-
