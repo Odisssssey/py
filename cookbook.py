@@ -2,6 +2,7 @@ import json
 
 with open('tet.json') as f:    
     data = json.load(f)
+
 def searchType(myType, data):
     j = []
     for scop in data:
@@ -9,7 +10,6 @@ def searchType(myType, data):
             for iformation in rows:
                 if myType == iformation['type']:
                     j.append(iformation['name'])
-                    #print(iformation['name'])
     return j
 
 def Ollgoods(myDishs, data, peoples):
@@ -38,8 +38,11 @@ def Ollgoods(myDishs, data, peoples):
 
 
 def print_shop_list(shop_list):
-    for key, shop_list_item in shop_list.items():
-        print("{product} {quantity} {unit}".format(**shop_list_item))                    
+    print("Ваш список продуктов:")
+    for shop_list_item in shop_list:
+        for key, item in shop_list_item.items():
+            print(item[0], item[1], item[2])                    
+
         
                     
 myDishs = []
@@ -72,4 +75,4 @@ while True:
 print("Вот все бдлюа, которые вы хотите приготовить", myDishs)
 people = int(input("На сколько человек будете готовить?"))
 myBag = Ollgoods(myDishs, data, people)
-print(myBag)
+print_shop_list(myBag)
