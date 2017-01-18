@@ -1,21 +1,12 @@
 import json
-import os
+import os          
 
 def countWord(word, j):
-    stop = 0
-    n = 0
-    for key, sumWord in j.items():
-        n += 1
-        if word == key:
-            sumWords = int(sumWord)
-            sumWords += 1
-            j[word] = sumWords
-            stop = 1
-            break
-    if stop == 0:
+    if word in j:
+        j[word] +=1
+    else:    
         j[word] = 1
-    return j            
-    
+    return j     
 
 def eachWord(line, j):
     for word in line.split(" "):
@@ -31,7 +22,7 @@ def perceptionData(item, j):
     return j
 
 def openFile(myFile):
-    with open(myFile) as f:    
+    with open(myFile, encoding = "windows-1251") as f:    
         data = json.load(f)
         item = data["rss"]["channel"]["item"]
     return item
@@ -58,5 +49,3 @@ def findJson(directory):
         
 directory = "./"
 findJson(directory)    
-
-
