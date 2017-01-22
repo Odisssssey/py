@@ -7,7 +7,6 @@ def ollImage(myDir):
     return files
 
 def createImage(convertProgram, inputDir, outputDir, outputName):
-    print(inputDir + outputName)
     subprocess.run([convertProgram,
                      "mogrify", str(os.path.join(inputDir, outputName)),
                      "-resize", "200", 
