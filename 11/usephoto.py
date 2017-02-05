@@ -12,10 +12,16 @@ def createImage(convertProgram, inputDir, outputDir, outputName):
                      "-resize", "200", 
                      str(os.path.join(outputDir, outputName))])
 
+def createFolder(path, data):
+    os.chdir(path)
+    os.mkdir(str(data))
+
 directory = os.path.dirname(os.path.realpath(__file__))
 convertProgram = os.path.join(directory, "convert.exe")
 myDir = os.path.join(directory, "Source")
 result = os.path.join(directory, "Result")
+if not os.path.isdir(result):
+    createFolder(directory, "Result")
 myImage = ollImage(myDir)
 
 for nameMyImage in myImage:
