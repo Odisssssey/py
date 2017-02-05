@@ -17,15 +17,11 @@ def printMils(count_mils, kilometers):
 def workWithLineCurrencies(f):
     kilometers = 0
     for line in f:
-        #print(line)
 
         my_str = line.replace(" mi\n", "").replace(" mi", "").replace(",", "")
-
         my_dict = my_str.split(" ")
-        #sum_currencies = printPrice(str(my_dict[2]), int(my_dict[1]), sum_currencies)
 
         kilometers += float(printMils(float(my_dict[1]), kilometers))
-        print(my_dict[1], kilometers)
     kilometers = round(kilometers, 2)
     return kilometers
 
