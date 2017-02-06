@@ -1,0 +1,39 @@
+import os.path
+
+def printFile(new_Path, question):
+    with open(new_Path, encoding = "utf-8") as f:
+        text = f.read()
+        if question in text:
+            return 1
+
+
+def goodfiles(my_files, directory, question):
+    good_files = []
+    for fil in my_files:
+        new_Path = os.path.join(directory, fil)
+        if printFile(new_Path, question):
+            good_files.append(fil)
+    return good_files
+
+def ollfiles(files):
+    my_files = []
+    for myFile in files:
+        if "." in myFile:
+            if myFile.split(".")[1] == "sql":
+                my_files.append(myFile)
+    return my_files
+
+def findsql(directory):
+    files = os.listdir(directory)
+    my_files = ollfiles(files)
+    while True:
+        print("Доступны следующие файлы:")
+        for fil in my_files:
+            print(fil)
+        question = input("Введите набор символов из интересующего вас файла:")
+        my_files = goodfiles(my_files, directory, question)
+
+
+myDir = os.path.dirname(os.path.realpath(__file__))
+
+print(findsql(myDir))
