@@ -30,6 +30,7 @@ def findsql(directory):
         print("Доступны следующие файлы:")
         for fil in my_files:
             print(fil)
+        print("Всего файлов: " + str(len(my_files)))
         question = input("Введите набор символов из интересующего вас файла:")
         my_files = goodfiles(my_files, directory, question)
 
